@@ -1,0 +1,57 @@
+<h1>Show Boon</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, OpenheroesWeb.BoonLive.FormComponent,
+    id: @boon.id,
+    title: @page_title,
+    action: @live_action,
+    boon: @boon,
+    return_to: Routes.boon_show_path(@socket, :show, @boon) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @boon.name %>
+  </li>
+
+  <li>
+    <strong>Tags:</strong>
+    <%= @boon.tags %>
+  </li>
+
+  <li>
+    <strong>Attribute:</strong>
+    <%= @boon.attribute %>
+  </li>
+
+  <li>
+    <strong>Invocation time:</strong>
+    <%= @boon.invocation_time %>
+  </li>
+
+  <li>
+    <strong>Duration:</strong>
+    <%= @boon.duration %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @boon.description %>
+  </li>
+
+  <li>
+    <strong>Effect:</strong>
+    <%= @boon.effect %>
+  </li>
+
+  <li>
+    <strong>Power:</strong>
+    <%= @boon.power %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.boon_show_path(@socket, :edit, @boon), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.boon_index_path(@socket, :index) %></span>

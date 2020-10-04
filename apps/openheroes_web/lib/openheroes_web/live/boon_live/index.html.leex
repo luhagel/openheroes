@@ -1,0 +1,53 @@
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, OpenheroesWeb.BoonLive.FormComponent,
+    id: @boon.id || :new,
+    title: @page_title,
+    action: @live_action,
+    boon: @boon,
+    return_to: Routes.boon_index_path(@socket, :index) %>
+<% end %>
+
+<table class="min-w-full divide-y divide-gray-200">
+  <thead>
+    <tr>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Tags</th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Power</th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Attribute</th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Invocation time</th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="boons" class="bg-white divide-y divide-gray-200">
+    <%= for boon <- @boons do %>
+      <tr id="boon-<%= boon.id %>">
+        <td class="px-6 py-4 whitespace-no-wrap"><%= boon.name %></td>
+        <td class="px-6 py-4 whitespace-no-wrap"><%= for tag <- boon.tags do %>
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-violett-800">
+                  <%= tag %>
+                </span>
+        <% end %></td>
+        <td class="px-6 py-4 whitespace-no-wrap"><%= boon.power %></td>
+        <td class="px-6 py-4 whitespace-no-wrap">
+        <%= for attr <- boon.attribute do %>
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  <%= attr %>
+                </span>
+        <% end %>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap"><%= boon.invocation_time %></td>
+        <td class="px-6 py-4 whitespace-no-wrap"><%= boon.duration %></td>
+
+        <td class="px-6 py-4 whitespace-no-wrap">
+          <span><%= live_redirect "Show", to: Routes.boon_show_path(@socket, :show, boon), class: "text-indigo-600 hover:text-indigo-900" %></span>
+          <span><%= live_patch "Edit", to: Routes.boon_index_path(@socket, :edit, boon) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: boon.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Boon", to: Routes.boon_index_path(@socket, :new) %></span>

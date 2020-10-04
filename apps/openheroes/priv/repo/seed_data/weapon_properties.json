@@ -1,0 +1,34 @@
+[{
+  "name": "Area",
+  "desc": "An area weapon always makes multi-target area attacks of the listed size and shape and cannot be used for single-target attacks. If a weapon has multiple area sizes, the attacker chooses from them with each attack. These attacks do not incur any of the disadvantage penalties associated with multi-target attacks."
+}, {
+  "name": "Expendable",
+  "desc": "An expendable item can be used once to make an attack. Afterwards, the item is expended and cannot be used again."
+}, {
+  "name": "Defensive",
+  "desc": "A defensive weapon grants advantage equal to the listed value when its wielder takes the defend action. Additionally, you gain a +1 armor bonus when wielding a defensive weapon (regardless of the defensive value listed). While wielding an item with the defensive property, you don\u2019t gain the advantage 1 to attacks normally associated with Melee One-handed or Two-handed weapons. A weapon cannot have a defensive value greater than 3."
+}, {
+  "name": "Delayed Ready",
+  "desc": "This weapon can only be used once per round. In addition, prior to using the weapon, the wielder must spend a move action to ready it."
+}, {
+  "name": "Forceful",
+  "desc": "This weapon can make attacks with the Might attribute and invoke banes accessible via Might."
+}, {
+  "name": "Heavy",
+  "desc": "The weapon is particularly heavy to carry. You may carry a maximum number of heavy items equal to your Might score."
+}, {
+  "name": "Precise",
+  "desc": "This weapon can be used to make attacks with the Agility attribute and invoke banes accessible via Agility."
+}, {
+  "name": "Reach",
+  "desc": "This weapon extends the natural melee range of the creature by 5\u2019."
+}, {
+  "name": "Slow",
+  "desc": "If you are wielding this weapon at the beginning of combat, you gain disadvantage 2 on your initiative roll. If you are not wielding the weapon but plan to use it on your first turn, this penalty is still applied. If you are wielding multiple weapons, your initiative modifier is equal to the slowest among them (slow, swift, or neither)."
+}, {
+  "name": "Stationary",
+  "desc": "The bulk and weight of this weapon is enormous. Moving it requires a focus action, which allows it to be moved up to 30 feet."
+}, {
+  "name": "Swift",
+  "desc": "If you are wielding this weapon at the beginning of combat, you gain advantage 2 on your initiative roll. If you are not wielding the weapon but plan to use it on your first turn, you still get this bonus. If you are wielding multiple weapons, your initiative modifier is equal to the slowest among them (slow, swift, or neither)."
+}]

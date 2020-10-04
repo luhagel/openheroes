@@ -1,0 +1,62 @@
+<h1>Show Bane</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, OpenheroesWeb.BaneLive.FormComponent,
+    id: @bane.id,
+    title: @page_title,
+    action: @live_action,
+    bane: @bane,
+    return_to: Routes.bane_show_path(@socket, :show, @bane) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @bane.name %>
+  </li>
+
+  <li>
+    <strong>Tags:</strong>
+    <%= @bane.tags %>
+  </li>
+
+  <li>
+    <strong>Attack attributes:</strong>
+    <%= @bane.attack_attributes %>
+  </li>
+
+  <li>
+    <strong>Attack:</strong>
+    <%= @bane.attack %>
+  </li>
+
+  <li>
+    <strong>Invocation time:</strong>
+    <%= @bane.invocation_time %>
+  </li>
+
+  <li>
+    <strong>Duration:</strong>
+    <%= @bane.duration %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @bane.description %>
+  </li>
+
+  <li>
+    <strong>Effect:</strong>
+    <%= @bane.effect %>
+  </li>
+
+  <li>
+    <strong>Power:</strong>
+    <%= @bane.power %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.bane_show_path(@socket, :edit, @bane), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.bane_index_path(@socket, :index) %></span>

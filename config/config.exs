@@ -23,7 +23,7 @@ config :openheroes_web, OpenheroesWeb.Endpoint,
   secret_key_base: "ZkkByyY/SIeAJHbO1P0xuArP7CyHxBOfXxHwLY8lQeqkoqjoIkPNOPtVoPYpXIpl",
   render_errors: [view: OpenheroesWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Openheroes.PubSub,
-  live_view: [signing_salt: "jWYZfXrP"]
+  live_view: [signing_salt: "jWYZfXrP"],
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -16,6 +16,10 @@ a {
   @apply text-blue-600;
 }
 
+input {
+  @apply px-2 py-1 border rounded-md border-gray-400 my-4 text-gray-500;
+}
+
 @tailwind components;
 
 @tailwind utilities;

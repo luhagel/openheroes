@@ -40,6 +40,12 @@ defmodule OpenheroesWeb.BaneLive.Index do
     {:noreply, assign(socket, :banes, list_banes())}
   end
 
+  def handle_event("search", %{"search_field" => %{"query" => query}}, socket) do
+    filtered_banes = Banes.list_banes_by_name(query)
+
+    {:noreply, assign(socket, :banes, filtered_banes)}
+  end
+
   defp list_banes do
     Banes.list_banes()
   end

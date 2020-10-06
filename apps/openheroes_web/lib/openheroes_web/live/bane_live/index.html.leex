@@ -1,4 +1,4 @@
-<h1>Listing Banes</h1>
+<%= render OpenheroesWeb.SharedView, "_page_header.html", title: "Banes" %>
 
 <%= if @live_action in [:new, :edit] do %>
   <%= live_modal @socket, OpenheroesWeb.BaneLive.FormComponent,
@@ -9,43 +9,14 @@
     return_to: Routes.bane_index_path(@socket, :index) %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tags</th>
-      <th>Attack attributes</th>
-      <th>Attack</th>
-      <th>Invocation time</th>
-      <th>Duration</th>
-      <th>Description</th>
-      <th>Effect</th>
-      <th>Power</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="banes">
-    <%= for bane <- @banes do %>
-      <tr id="bane-<%= bane.id %>">
-        <td><%= bane.name %></td>
-        <td><%= bane.tags %></td>
-        <td><%= bane.attack_attributes %></td>
-        <td><%= bane.attack %></td>
-        <td><%= bane.invocation_time %></td>
-        <td><%= bane.duration %></td>
-        <td><%= bane.description %></td>
-        <td><%= bane.effect %></td>
-        <td><%= bane.power %></td>
-
-        <td>
-          <span><%= live_redirect "Show", to: Routes.bane_show_path(@socket, :show, bane) %></span>
-          <span><%= live_patch "Edit", to: Routes.bane_index_path(@socket, :edit, bane) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: bane.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
-    <% end %>
+<div class="px-6 py-4">
+<%= render OpenheroesWeb.SharedView, "_search.html", assigns %>
+<table class="min-w-full divide-y divide-gray-200">
+  <%= render OpenheroesWeb.SharedView, "_table_header.html", labels: ["Name", "Tags", "Power", "Attack Attributes", "Invocation Time", "Duration", ""] %>
+  <tbody id="banes" class="bg-white divide-y divide-gray-200">
+    <%= render_many @banes, OpenheroesWeb.BaneView, "_bane.html", assigns %>
   </tbody>
 </table>
+</div>
 
 <span><%= live_patch "New Bane", to: Routes.bane_index_path(@socket, :new) %></span>

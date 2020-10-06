@@ -1,4 +1,4 @@
-<h1>Listing Characters</h1>
+<%= render OpenheroesWeb.SharedView, "_page_header.html", title: "Characters" %>
 
 <%= if @live_action in [:new, :edit] do %>
   <%= live_modal @socket, OpenheroesWeb.CharacterLive.FormComponent,
@@ -8,30 +8,12 @@
     character: @character,
     return_to: Routes.character_index_path(@socket, :index) %>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Level</th>
-
-      <th></th>
-    </tr>
-  </thead>
+<div class="px-6 py-4">
+<table class="min-w-full divide-y divide-gray-200">
+  <%= render OpenheroesWeb.SharedView, "_table_header.html", labels: ["Name", "Level", ""] %>
   <tbody id="characters">
-    <%= for character <- @characters do %>
-      <tr id="character-<%= character.id %>">
-        <td><%= character.name %></td>
-        <td><%= character.level %></td>
-
-        <td>
-          <span><%= live_redirect "Show", to: Routes.character_show_path(@socket, :show, character) %></span>
-          <span><%= live_patch "Edit", to: Routes.character_index_path(@socket, :edit, character) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: character.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
-    <% end %>
+    <%= render_many @characters, OpenheroesWeb.CharacterView, "_character.html", assigns %>
   </tbody>
 </table>
-
 <span><%= live_patch "New Character", to: Routes.character_index_path(@socket, :new) %></span>
+</div>

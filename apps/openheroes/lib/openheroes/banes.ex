@@ -22,6 +22,20 @@ defmodule Openheroes.Banes do
   end
 
   @doc """
+  Returns the list of banes.
+
+  ## Examples
+
+      iex> list_banes_by_name("test")
+      [%Bane{}, ...]
+
+  """
+  def list_banes_by_name(name) do
+    from(b in Bane, where: ilike(b.name, ^"%#{String.replace(name, "%", "\\%")}%"))
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single bane.
 
   Raises `Ecto.NoResultsError` if the Bane does not exist.

@@ -22,6 +22,20 @@ defmodule Openheroes.Boons do
   end
 
   @doc """
+  Returns the list of boons.
+
+  ## Examples
+
+      iex> list_boons_by_name("test")
+      [%Boon{}, ...]
+
+  """
+  def list_boons_by_name(name) do
+    from(b in Boon, where: ilike(b.name, ^"%#{String.replace(name, "%", "\\%")}%"))
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single boon.
 
   Raises `Ecto.NoResultsError` if the Boon does not exist.

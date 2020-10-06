@@ -7,6 +7,10 @@
     return_to: Routes.boon_index_path(@socket, :index) %>
 <% end %>
 
+<form phx-change="search">
+  <%= text_input :search_field, :query, placeholder: "Seach", autofocus: true, "phx-debounce": "300" %>
+</form>
+
 <table class="min-w-full divide-y divide-gray-200">
   <thead>
     <tr>

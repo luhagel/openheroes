@@ -40,6 +40,12 @@ defmodule OpenheroesWeb.BoonLive.Index do
     {:noreply, assign(socket, :boons, list_boons())}
   end
 
+  def handle_event("search", %{"search_field" => %{"query" => query}}, socket) do
+    filtered_boons = Boons.list_boons_by_name(query)
+
+    {:noreply, assign(socket, :boons, filtered_boons)}
+  end
+
   defp list_boons do
     Boons.list_boons()
   end

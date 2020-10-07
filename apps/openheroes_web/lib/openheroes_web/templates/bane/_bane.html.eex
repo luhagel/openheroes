@@ -1,5 +1,7 @@
 <tr id="bane-<%= @bane.id %>">
-  <td class="px-6 py-4 whitespace-no-wrap"><%= @bane.name %></td>
+  <td class="px-6 py-4 whitespace-no-wrap">
+  <%= live_redirect @bane.name, to: Routes.bane_show_path(@socket, :show, @bane) %>
+  </td>
   <td class="px-6 py-4 whitespace-no-wrap">
   <%= for tag <- @bane.tags do %>
     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-violett-800">
@@ -19,7 +21,6 @@
   <td class="px-6 py-4 whitespace-no-wrap"><%= @bane.duration %></td>
 
   <td class="px-6 py-4 whitespace-no-wrap">
-    <span><%= live_redirect "Show", to: Routes.bane_show_path(@socket, :show, @bane) %></span>
     <span><%= live_patch "Edit", to: Routes.bane_index_path(@socket, :edit, @bane) %></span>
     <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @bane.id, data: [confirm: "Are you sure?"] %></span>
   </td>

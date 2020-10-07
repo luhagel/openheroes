@@ -1,5 +1,7 @@
 <tr id="boon-<%= @boon.id %>">
-  <td class="px-6 py-4 whitespace-no-wrap"><%= @boon.name %></td>
+  <td class="px-6 py-4 whitespace-no-wrap">
+  <%= live_redirect @boon.name, to: Routes.boon_show_path(@socket, :show, @boon), class: "text-indigo-600 hover:text-indigo-900" %>
+  </td>
   <td class="px-6 py-4 whitespace-no-wrap">
   <%= for tag <- @boon.tags do %>
     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-violett-800">
@@ -19,7 +21,6 @@
   <td class="px-6 py-4 whitespace-no-wrap"><%= @boon.duration %></td>
 
   <td class="px-6 py-4 whitespace-no-wrap">
-    <span><%= live_redirect "Show", to: Routes.boon_show_path(@socket, :show, @boon), class: "text-indigo-600 hover:text-indigo-900" %></span>
     <span><%= live_patch "Edit", to: Routes.boon_index_path(@socket, :edit, @boon) %></span>
     <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @boon.id, data: [confirm: "Are you sure?"] %></span>
   </td>

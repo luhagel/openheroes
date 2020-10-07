@@ -10,9 +10,10 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :openheroes_web, OpenheroesWeb.Endpoint,
-  url: [host: "lame-steel-archerfish.gigalixirapp.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  force_ssl: [rewrite_on: [:x_forwarded_proto]]
+  http: [port: {:system, "PORT"}],
+  url: [scheme: "https", host: "fierce-woodland-60338.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/cache_manifest.json"
 
 # ## SSL Support
 #

@@ -36,7 +36,8 @@ config :phoenix, :json_library, Jason
 # Pow
 config :openheroes_web, :pow,
   user: Openheroes.Users.User,
-  repo: Openheroes.Repo
+  repo: Openheroes.Repo,
+  web_module: OpenheroesWeb
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

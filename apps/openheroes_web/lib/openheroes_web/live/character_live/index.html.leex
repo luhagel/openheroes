@@ -8,12 +8,10 @@
     character: @character,
     return_to: Routes.character_index_path(@socket, :index) %>
 <% end %>
-<div class="px-6 py-4">
-<table class="min-w-full divide-y divide-gray-200">
+<table class="uk-table uk-table-hover uk-table-responsive">
   <%= render OpenheroesWeb.SharedView, "_table_header.html", labels: ["Name", "Level", ""] %>
   <tbody id="characters">
     <%= render_many @characters, OpenheroesWeb.CharacterView, "_character.html", assigns %>
   </tbody>
 </table>
 <span><%= live_patch "New Character", to: Routes.character_index_path(@socket, :new) %></span>
-</div>

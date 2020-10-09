@@ -1,18 +1,19 @@
-<h2><%= @title %></h2>
+<h2 class="uk-modal-title"><%= @title %></h2>
 
 <%= f = form_for @changeset, "#",
   id: "character-form",
   phx_target: @myself,
   phx_change: "validate",
-  phx_submit: "save" %>
+  phx_submit: "save",
+  class: "uk-form" %>
 
   <%= label f, :name %>
-  <%= text_input f, :name %>
+  <%= text_input f, :name, class: "uk-input" %>
   <%= error_tag f, :name %>
 
   <%= label f, :level %>
-  <%= number_input f, :level %>
+  <%= number_input f, :level, class: "uk-input" %>
   <%= error_tag f, :level %>
 
-  <%= submit "Save", phx_disable_with: "Saving..." %>
+  <%= submit "Save", phx_disable_with: "Saving...", class: "uk-button" %>
 </form>

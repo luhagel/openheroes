@@ -1,9 +1,9 @@
 <tr id="character-<%= @character.id %>">
-  <td class="px-6 py-4 whitespace-no-wrap"><%= @character.name %></td>
-  <td class="px-6 py-4 whitespace-no-wrap"><%= @character.level %></td>
+  <td><%= @character.name %></td>
+  <td><%= @character.level %></td>
 
-  <td class="px-6 py-4 whitespace-no-wrap">
-    <span><%= live_redirect "Show", to: Routes.character_show_path(@socket, :show, @character), class: "text-indigo-600 hover:text-indigo-900" %></span>
+  <td>
+    <span><%= live_redirect "Show", to: Routes.character_show_path(@socket, :show, @character) %></span>
     <span><%= live_patch "Edit", to: Routes.character_index_path(@socket, :edit, @character) %></span>
     <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @character.id, data: [confirm: "Are you sure?"] %></span>
   </td>

@@ -1,26 +1,26 @@
 <tr id="boon-<%= @boon.id %>">
-  <td class="px-6 py-4 whitespace-no-wrap">
+  <td>
   <%= live_redirect @boon.name, to: Routes.boon_show_path(@socket, :show, @boon), class: "text-indigo-600 hover:text-indigo-900" %>
   </td>
-  <td class="px-6 py-4 whitespace-no-wrap">
+  <td>
   <%= for tag <- @boon.tags do %>
-    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-violett-800">
+    <span class="uk-badge">
       <%= tag %>
     </span>
   <% end %>
   </td>
-  <td class="px-6 py-4 whitespace-no-wrap"><%= Enum.join(@boon.power, "/") %></td>
-  <td class="px-6 py-4 whitespace-no-wrap">
+  <td><%= Enum.join(@boon.power, "/") %></td>
+  <td>
   <%= for attr <- @boon.attribute do %>
-  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-            <%= attr %>
-          </span>
+    <span class="uk-badge">
+      <%= attr %>
+    </span>
   <% end %>
   </td>
-  <td class="px-6 py-4 whitespace-no-wrap"><i><%= @boon.invocation_time %></i></td>
-  <td class="px-6 py-4 whitespace-no-wrap"><%= @boon.duration %></td>
+  <td><i><%= @boon.invocation_time %></i></td>
+  <td><%= @boon.duration %></td>
 
-  <td class="px-6 py-4 whitespace-no-wrap">
+  <td>
     <span><%= live_patch "Edit", to: Routes.boon_index_path(@socket, :edit, @boon) %></span>
     <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @boon.id, data: [confirm: "Are you sure?"] %></span>
   </td>

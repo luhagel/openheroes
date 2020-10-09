@@ -4,15 +4,15 @@ defmodule OpenheroesWeb.ModalComponent do
   @impl true
   def render(assigns) do
     ~L"""
-    <div id="<%= @id %>" class="phx-modal"
+    <div id="<%= @id %>" uk-modal
       phx-capture-click="close"
       phx-window-keydown="close"
       phx-key="escape"
       phx-target="#<%= @id %>"
       phx-page-loading>
 
-      <div class="phx-modal-content">
-        <%= live_patch raw("&times;"), to: @return_to, class: "phx-modal-close" %>
+      <div class="uk-modal-dialog uk-modal-body">
+        <%= live_patch "", to: @return_to, class: "uk-modal-close" %>
         <%= live_component @socket, @component, @opts %>
       </div>
     </div>
